@@ -6,15 +6,21 @@
 
 ### Machine Learning 머신 러닝
 
-#### 지도 학습
+#### Supervised Learning
 
 * [분류](./ML/머신러닝_분류.md)
 * [회귀](./ML/머신러닝_회귀.md)
 
-#### 비지도 학습
+#### Unsupervised Learning
 
 * [차원축소](./ML/머신러닝_차원축소.md)
 * [군집화](./ML/머신러닝_군집화.md)
+
+#### Semi-supervised Learning
+
+
+#### Reinforcement Learning
+
 
 ---
 
@@ -22,6 +28,7 @@
 
 * [데이터 전처리](./ML/데이터_전처리.md)
 
+#### Optimization
 
 
 ---
