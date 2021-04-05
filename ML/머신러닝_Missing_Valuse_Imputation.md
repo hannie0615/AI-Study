@@ -1,4 +1,4 @@
-# Missing value Imaputation (MVI)
+# Missing value Imputation (MVI)
 
 1. Single Imputation techniques
 
@@ -25,8 +25,11 @@
 ## Missing Data
 
 1. missing completely at random (MCAR)
+   * missing occurs entirely at random
 2. missing at random (MAR)
+   * missing depends only on the observed variables
 3. not missing at random (NMAR)
+   * missing depends on both observed variables and the unobserved variables
 
 
 
@@ -114,3 +117,61 @@
 
 #### Extracting and Composing Robust Features with Denoising Autoencoders
 
+
+
+---
+
+#### GAIN: Missing Data Imputation using Generative Adversarial Nets
+
+* GAN?
+
+  > 비지도 학습으로 원 데이터가 가지고 있는 확률분포를 추정하도록 하고, 인공신경망이 그 분포를 만들어 낼 수 있도록 하는 것
+  >
+  > 참고 : https://www.samsungsds.com/kr/insights/Generative-adversarial-network-AI.html
+
+  * GAN에서 다루고자 하는 모든 데이터는 확률분포를 가지고 있는 랜덤변수(Random Variable)
+
+    * 랜덤변수는 측정할 때마다 특정 확률분포를 따르는 다른 숫자가 나올 수 있는 값
+    * 즉, 랜던변수의 확률 분포를 안다는 것은 데이터에 대한 전부를 이해하는 것
+
+  *  GAN과 같은 비지도학습이 가능한 머신러닝 알고리즘으로 데이터에 대한 확률분포를 모델링 할 수 있으면, 원 데이터와 확률분포를 공유하는 무한히 많은 새로운 데이터 생성 가능
+
+  * Ian Goodfellow 가 발표환 GAN은 회귀생성 모델로서 분류를 담당하는 모델(Discriminator D) 과 회귀를 생성하는 모델(생성자 G)로 구성
+
+    * 생성자 G와 판별자 D가 서로의 성능을 개선하며 적대적으로 경쟁해 나가는 모델
+      * 생성자 G는 원 데이터의 확률분포를 알아내려고 노력하며, 학습이 종료된 후에는 원 데이터의 확률분포를 따르는 새로운 데이터 생성
+    * GAN이 만들어 내는 확률분포와 원데이터의 확률분포가 거의 동일하게 되면 분류자 D는 0.5 라는 확률 값을 내놓음
+      * 동전을 던져서 앞면,뒷면의 확률이 똑같이 0.5 가 되는 것처럼 GAN에 의해 만들어진 데이터가 진짜인지 가짜인지 맞출 확률이 0.5가 되면서 분류자가 의미가 없어지게 됨
+        * 즉 G가 실제 데이터와 거의 유사한 데이터를 생성하고 있다는 뜻
+
+  * 적대적 학습은 분류 모델을 먼저 학습시킨 후, 생성 모델을 학습시키는 과정을 반복
+
+  * 분류 모델 D의 학습
+
+    1. 진짜 데이터를 입력해서 네트워크가 해당 데이터를 진짜로 분류하도록 학습
+    2. 생성 모델에서 생성한 가짜 데이터를 입력해서 해당 데이터를 가짜로 분류하도록 학습
+
+  * 생성 모델 G의 학습
+
+    1. 생성 모델에서 만들어낸 가짜 데이터를 판별 모델에 입력하고, 가짜 데이터를 진짜라고 분류할 만큼 진짜 데이터와 유사한 데이터를 만들어 내도록 생성 모델 학습 
+       * 이 과정을 통해 분류 모델은 진짜 데이터를 가짜로, 가짜 데이터를 진짜로 분류할 수 있게 됨
+
+  * 생성 모델 G는 분류에 성공할 확률을 낮추려 하고, 분류 모델 D는 분류에 성공할 확률을 높이려 하면서 서로 경쟁적으로 발전
+
+  * GAN의 목적함수 V(D,G)
+
+    ![gan_f](..\images\gan_f.png)
+
+    * minmax problem을 푸는 방식
+      * 식이 최대가 되는 D & 식이 최소가 되는 G 구하기
+    * x~Pdata(x) : 실제 데이터에 대한 확률분호에서 샘플링한 데이터
+    * z~Pz(z) : 임의의 노이즈에서 샘플링한 데이터 (일반적으로 가우시안 분포 사용)
+      * z는 latent vector로 차원이 줄어든 채로 데이터를 잘 설명할 수 있는 잠재 공간에서의 벡터를 의미
+    * **V(D,G) 를 최대화 하는 D**
+      * D(x) 는 분류자로 진짜일 확률 이므로 0~1 사이의 값이고 데이터가 진짜면 1 가짜면 0의 값을 나타냄
+      * D(G(z)) 는 G가 만들어낸 데이터인 G(z)가 진짜라고 판단되면 1, 가짜라고 판단되면 0의 값을 나타냄
+      * log(D(x)) 와 log(1-D(G(z))) 가 모두 최대가 되어야 함
+        * D(x) 는 1이 되어야 하고 이는 실제 데이터를 진짜라고 분류하도록 학습하는 것
+        * D(G(z)) 는 0이 되어야 하고 이는 생성자가 만들어낸 가짜 데이터를 가짜라고 분류하도록 학습하는 것
+    * **V(D,G) 를 최소화 하는 G**
+      * 
