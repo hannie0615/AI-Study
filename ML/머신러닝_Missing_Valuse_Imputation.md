@@ -160,7 +160,7 @@
 
   * GAN의 목적함수 V(D,G)
 
-    ![gan_f](..\images\gan_f.png)
+    ![gan_f](..\images\ganf.png)
 
     * minmax problem을 푸는 방식
       * 식이 최대가 되는 D & 식이 최소가 되는 G 구하기
