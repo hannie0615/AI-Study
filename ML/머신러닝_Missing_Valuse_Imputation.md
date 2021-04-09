@@ -15,6 +15,47 @@
 
 
 
+3.
+
+* MICE
+
+  > MICE is a *multiple imputation* method used to replace missing data values in a data set under certain assumptions about the data missingness mechanism (e.g., the data are missing at random, the data are missing completely at random).
+  >
+  > reference : https://stats.stackexchange.com/questions/421545/multiple-imputation-by-chained-equations-mice-explained
+
+  * To sum up, MICE imputes missing values in the variables of a data set by using a divide and conquer approach - in other words, by focusing on one variable at a time. Once the focus is placed on one variable, MICE uses all the other variables in the data set (or a sensibly chosen subset of these variables) to predict missingness in that variable.
+  * The prediction is based on a regression model, with the form of the model depending on the nature of the focus variable (e.g., age and income will require linear regression models for prediction of their missing values, but gender will require a logistic regression model).
+
+* MissForest
+
+  > reference : https://data-newbie.tistory.com/291
+
+  * 1. 평균이나 다른 대체법으로 missing을 처음에 추측한다.
+
+    2. missing value의 양에 따라서 X_s를 정렬한다. 가장 낮은 것부터 시작
+
+    3. 각각의 변수 **X_s**를 반응 변수 **Y_obs(s)**를 사용하여 Randomfrest fitting을 한다. 그리고 예측을 하여 **s_obs(s)** 값을 얻는다. 그리고 그 값과 실제 결측치인 **y_miss(s)**에 예측을 한다. 
+
+    4. 이러한 imputation 절차는 기준치 criterion gamma를 만족할 때까지 반복한다. 기준치 gamma는 새롭게 imputation data matrix와 기존의 matrix가 2개의 타입 변수(continuous , categorical)에 대해서 처음보다 커지는 즉시 충족
+
+  * continous 같은 경우에 공식을 보면 이전에 missing matrix와 새롭게 생성된 missing matrix 간의 차이를 빼고 제곱합을 해주고 새롭게 생성된 값의 제곱합을 나눠준 게 도함수가 된다. categorical 같은 경우에는 이전 미싱 데이터와 현재 미싱 데이터가 같냐 같지 않냐라는 indicator 함수를 통해서 계산을 한다.
+
+  * 논문에 의하면 이 방법이 MCAR/MAR에서 좋은 성과를 냈고, NMAR에서도 눈에 띄게 좋은 성과를 냄
+
+* Matrix Completion (Soft-Impute)
+
+  > 논문 : Spectral Regularization Algorithms for Learning Large Incomplete Matrices
+
+  *  SOFT-IMPUTE iteratively replaces the missing elements with those obtained from a soft-thresholded SVD
+
+* Autoencoder
+
+  > 논문 : MIDA: Multiple Imputation using Denoising Autoencoders
+
+* Expectation-maximization (EM)
+
+  > 논문 : Pattern classification with missing data : a review
+
 * the autoregressive integrated moving-average (ARIMA) method
 * the Markov Chain Monte Carlo (MCMC) multiple imputation method
 * K-NN
@@ -22,14 +63,26 @@
 
 
 
+
+
 ## Missing Data
 
 1. missing completely at random (MCAR)
+   
    * missing occurs entirely at random
 2. missing at random (MAR)
+   
    * missing depends only on the observed variables
+   
+   > MCAR & MAR 경우
+   >
+   > (mean / mode imputation, conditional mean imputation (regression imputation), stochastic regression imputation, hot deck imputation, substitution, cold deck imputation, maximum likelihood method (ML), EM algorithm, predictive mean matching, k-NN imputation.)
 3. not missing at random (NMAR)
+   
    * missing depends on both observed variables and the unobserved variables
+   
+   > NMAR 같은 경우는 좀 더 복잡한 방식을 요구
+   > Selection models , Pattern-mixture models, MissForest
 
 
 
@@ -122,6 +175,16 @@
 ---
 
 #### GAIN: Missing Data Imputation using Generative Adversarial Nets
+
+> Paper : http://proceedings.mlr.press/v80/yoon18a/yoon18a.pdf
+>
+> Code : https://github.com/jsyoon0823/GAIN
+
+
+
+
+
+
 
 * GAN?
 
