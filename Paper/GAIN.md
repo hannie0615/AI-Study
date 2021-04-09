@@ -8,7 +8,7 @@
 
 Generative Adversarial Nets (GAN) 알고리즘을 이용하여 새롭게 고안한 MVI 방법으로  데이터가 없는 missing data 부분을 다시 생성하는 알고리즘
 
-
+---
 
 #### Missing data types
 
@@ -23,7 +23,7 @@ missing data 는 3가지 타입으로 분류될 수 있다.
 
 본 논문에서는 데이터의 결측치가 MCAR 이라고 가정하고 이론적 결론을 추론한다.
 
-
+---
 
 #### Architecture
 
