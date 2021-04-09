@@ -29,7 +29,7 @@ missing data 는 3가지 타입으로 분류될 수 있다.
 
 > 본 논문에서 제안하는 GAIN 은 크게 Generator(G), Discriminator(D), Hint Generator(H) 로 이루어져 있다.
 
-<p align="center"><img src="../images/GAIN.png" alt="GAIN" style="zoom:30%; text-align:center;" width="50%" height="50%" /></P>
+<p align="center"><img src="../images/GAIN.png" alt="GAIN" style="" width="40%" height="40%" /></P>
 
 1. Generator
 
