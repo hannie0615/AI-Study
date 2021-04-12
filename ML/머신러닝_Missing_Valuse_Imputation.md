@@ -44,17 +44,24 @@
 
 * Matrix Completion (Soft-Impute)
 
-  > 논문 : Spectral Regularization Algorithms for Learning Large Incomplete Matrices
+  > Paper : Spectral Regularization Algorithms for Learning Large Incomplete Matrices
 
   *  SOFT-IMPUTE iteratively replaces the missing elements with those obtained from a soft-thresholded SVD
 
 * Autoencoder
 
-  > 논문 : MIDA: Multiple Imputation using Denoising Autoencoders
+  > Paper : MIDA: Multiple Imputation using Denoising Autoencoders
+  >
+  > Code : https://github.com/Harry24k/MIDA-pytorch
+
+  * Multiple imputation?
+    Most of the datasets have a combination of continuous, categorical and ordinal attributes, which further challenges the convergence of our model using small training samples.
+  * competitor : MICE (Predictive mean matching)
+  * 기존 AE와 다르게 hidden layer의 차원이 input layer 보다 더 큼 (Noise 갯수 많큼 차원을 키움 )
 
 * Expectation-maximization (EM)
 
-  > 논문 : Pattern classification with missing data : a review
+  > Paper : Pattern classification with missing data : a review
 
 * the autoregressive integrated moving-average (ARIMA) method
 * the Markov Chain Monte Carlo (MCMC) multiple imputation method
@@ -70,16 +77,19 @@
 1. missing completely at random (MCAR)
    
    * missing occurs entirely at random
+   * Ex) Survey participants flip a coin to decide whether to answer questions or not.
 2. missing at random (MAR)
    
    * missing depends only on the observed variables
+   * Ex ) Survey participants that live in postal code 456 and 789 refuse to fill in the questionnaire
    
    > MCAR & MAR 경우
    >
    > (mean / mode imputation, conditional mean imputation (regression imputation), stochastic regression imputation, hot deck imputation, substitution, cold deck imputation, maximum likelihood method (ML), EM algorithm, predictive mean matching, k-NN imputation.)
 3. not missing at random (NMAR)
    
-   * missing depends on both observed variables and the unobserved variables
+   * missing depends on either observed variables or the unobserved variables
+   * Ex) Everyone who owns a six bedroom house refuses the questionnaire, bigger house is an indirect indicator for greater wealth and a better paying job, but we don’t have the related data
    
    > NMAR 같은 경우는 좀 더 복잡한 방식을 요구
    > Selection models , Pattern-mixture models, MissForest
