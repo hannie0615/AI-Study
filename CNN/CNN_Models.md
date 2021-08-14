@@ -4,7 +4,7 @@
 
    > 원본 논문 : "Gradient-based learning applied to document recognition"
 
-   ![lanet](..\images\lanet.png)
+   <img src="..\images\lanet.png" alt="alexnet" style="zoom:75%;" />
 
    [출처]: https://ieeexplore.ieee.org/document/726791	"Gradient-based learning applied to document recognition"
 
