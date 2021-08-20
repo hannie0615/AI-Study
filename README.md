@@ -1,7 +1,5 @@
 # AI-Study
 
----
-
 ### Machine Learning 머신 러닝
 
 #### Supervised Learning
@@ -36,9 +34,9 @@
 #### Optimization
 
 
+
+
 ---
-
-
 
 ### Deep Learning 딥 러닝
 
@@ -47,6 +45,8 @@
 * [CNN](./CNN/CNN_Models.md)
 
 
+
+---
 
 ## Reference (참고)
 
