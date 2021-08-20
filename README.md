@@ -1,7 +1,5 @@
 # AI-Study
 
-
-
 ---
 
 ### Machine Learning 머신 러닝
@@ -19,7 +17,10 @@
 #### Semi-supervised Learning
 
 
+
 #### Reinforcement Learning
+
+
 
 
 ---
@@ -27,6 +28,10 @@
 ### Date Preprocessing
 
 * [데이터 전처리](./ML/데이터_전처리.md)
+
+* [Time Serise Data](./Time_Series)
+
+  
 
 #### Optimization
 
