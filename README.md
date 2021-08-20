@@ -27,7 +27,7 @@
 
 * [데이터 전처리](./ML/데이터_전처리.md)
 
-* [Time Serise Data](./Time_Series)
+* [Time Serise Data](./Time-Series)
 
   
 
